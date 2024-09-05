@@ -202,18 +202,18 @@ const auth_header = 'Basic ' + Buffer.from(auth_string).toString('base64');
         }
 
         const totalHeight = await page.evaluate(() => {
-            const scrollableSection = document.querySelector('.scrollbar-view');
+            const scrollableSection = document.querySelector('.view');
             return scrollableSection ? scrollableSection.firstElementChild.scrollHeight : null;
         });
 
         if (!totalHeight) {
-            throw new Error("Unable to determine the page height. The selector '.scrollbar-view' might be incorrect or missing.");
+            throw new Error("Unable to determine the page height. The selector '.view' might be incorrect or missing.");
         } else {
             console.log("Page height adjusted to:", totalHeight);
         }
 
         await page.evaluate(async () => {
-            const scrollableSection = document.querySelector('.scrollbar-view');
+            const scrollableSection = document.querySelector('.view');
             if (scrollableSection) {
                 const childElement = scrollableSection.firstElementChild;
                 let scrollPosition = 0;
